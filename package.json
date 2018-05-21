@@ -1,5 +1,5 @@
 {
-  "name": "express-openapi-validate",
+  "name": "@splunk/forked-express-openapi-validate",
   "version": "0.4.1",
   "description": "Express middleware to validate request based on an OpenAPI 3 document",
   "main": "dist/index.js",
