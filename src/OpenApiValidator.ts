@@ -104,11 +104,18 @@ export default class OpenApiValidator {
       this._document,
       _.get(operation, ["requestBody"], {})
     );
-    const bodySchema = _.get(
+    let bodySchema = _.get(
       requestBodyObject,
       ["content", "application/json", "schema"],
       {}
     );
+    if(_.isEmpty(bodySchema) && method=="patch"){// no application/json patch, so we try "application/json-patch+json"
+      bodySchema = _.get(
+        requestBodyObject,
+        ["content", "application/json-patch+json", "schema"],
+        {}
+      );
+    }
     const parametersSchema = this._parameterObjectsToSchema(operation);
     const schema = {
       properties: {
