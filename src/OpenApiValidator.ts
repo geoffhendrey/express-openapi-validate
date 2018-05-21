@@ -109,7 +109,8 @@ export default class OpenApiValidator {
       ["content", "application/json", "schema"],
       {}
     );
-    if(_.isEmpty(bodySchema) && method=="patch"){// no application/json patch, so we try "application/json-patch+json"
+    if (_.isEmpty(bodySchema) && method === "patch") {
+      // no application/json patch, so we try "application/json-patch+json"
       bodySchema = _.get(
         requestBodyObject,
         ["content", "application/json-patch+json", "schema"],
